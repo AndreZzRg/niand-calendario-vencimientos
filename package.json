@@ -1,0 +1,75 @@
+{
+  "name": "niand-calendario-vencimientos",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Calendario de Vencimientos — Obligaciones periódicas laborales, de datos y de SST con exportación iCalendar. Laboratorio NiAnd Labs.",
+  "keywords": [
+    "niand-labs",
+    "cumplimiento",
+    "colombia",
+    "legaltech",
+    "ley-1581-de-2012-y-circular-sic-005-de-2017",
+    "resoluci-n-0312-de-2019",
+    "ley-1010-de-2006",
+    "decreto-1072-de-2015"
+  ],
+  "author": "AndreZzRg <andresrg1999@hotmail.com>",
+  "license": "MIT",
+  "homepage": "https://andrezzrg.github.io/niand-calendario-vencimientos/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreZzRg/niand-calendario-vencimientos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AndreZzRg/niand-calendario-vencimientos/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5",
+    "zustand": "^5.0.15",
+    "date-fns": "^4.4.0",
+    "lucide-react": "^1.47.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/coverage-v8": "^5.0.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "jsdom": "^30.1.0",
+    "prettier": "^3.9.8",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.70.0",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}
