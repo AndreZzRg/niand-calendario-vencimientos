@@ -38,11 +38,16 @@ export function exportarJSON(datos: unknown, sufijo = 'datos'): void {
 }
 
 export function exportarTexto(texto: string, sufijo: string, extension = 'md'): void {
-  descargar(
-    texto,
-    `${NOMBRE_BASE}-${sufijo}-${sello()}.${extension}`,
-    'text/plain;charset=utf-8',
-  );
+  descargar(texto, `${NOMBRE_BASE}-${sufijo}-${sello()}.${extension}`, 'text/plain;charset=utf-8');
+}
+
+/**
+ * Descarga un calendario iCalendar. El tipo `text/calendar` es el que hace
+ * que Outlook y Google Calendar ofrezcan importarlo en vez de abrirlo como
+ * texto plano.
+ */
+export function exportarICS(contenido: string, sufijo = 'vencimientos'): void {
+  descargar(contenido, `${NOMBRE_BASE}-${sufijo}-${sello()}.ics`, 'text/calendar;charset=utf-8');
 }
 
 /** Escapa un campo para CSV según RFC 4180. */
@@ -57,11 +62,7 @@ export function campoCSV(valor: unknown): string {
  */
 export function exportarCSV(filas: ReadonlyArray<ReadonlyArray<unknown>>, sufijo = 'tabla'): void {
   const cuerpo = filas.map((f) => f.map(campoCSV).join(';')).join('\r\n');
-  descargar(
-    '\uFEFF' + cuerpo,
-    `${NOMBRE_BASE}-${sufijo}-${sello()}.csv`,
-    'text/csv;charset=utf-8',
-  );
+  descargar('\uFEFF' + cuerpo, `${NOMBRE_BASE}-${sufijo}-${sello()}.csv`, 'text/csv;charset=utf-8');
 }
 
 /** Lee un archivo elegido por el usuario y lo entrega como texto. */

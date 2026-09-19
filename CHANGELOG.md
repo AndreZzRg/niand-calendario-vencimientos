@@ -7,9 +7,26 @@ versionado sigue [Versionado Semántico](https://semver.org/lang/es/).
 
 ## [No publicado]
 
-### Por hacer
+### Corregido
 
-- Ampliación de la cobertura de pruebas del dominio por encima del 90 %.
+- **La integración continua fallaba en todos sus pasos.** `package-lock.json` no
+  estaba versionado, de modo que `npm ci` —primer paso de los flujos de CI, Pages
+  y CodeQL— fallaba antes de ejecutar nada.
+- **Faltaba la capa de aplicación.** `src/main.tsx` importaba `./App`, que no
+  existía, junto con todo `src/domain/` y `src/features/`: la verificación de
+  tipos y la construcción de producción fallaban.
+- **Cobertura por debajo del umbral.** `src/lib/almacen.ts` y `src/lib/exportar.ts`
+  no tenían pruebas y quedaban en 0 %, lo que arrastraba el total por debajo de los
+  umbrales que aplica `npm run test:coverage` y hacía fallar ese paso aunque
+  `vitest run` a secas pasara.
+
+### Agregado
+
+- `exportarICS` en `src/lib/exportar.ts`, con el tipo `text/calendar` que hace que
+  Outlook y Google Calendar ofrezcan importar el archivo en vez de abrirlo como
+  texto plano.
+- Cobertura de pruebas de `src/lib`: validación por esquema y versión del
+  almacenamiento, y escape CSV conforme al RFC 4180 en la exportación.
 
 ---
 
